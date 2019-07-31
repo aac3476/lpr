@@ -9,9 +9,9 @@ from app import app,db
 from flask import request
 from flask import jsonify
 from app.models import Users,Toll
-from app.common import trueReturn,falseReturn,currentUser,calmoney
+from app.common import trueReturn,falseReturn,currentUser,calmoney,filehash
 from app.Auth import Auth
-import datetime
+import datetime,os,hashlib,shutil
 
 
 @app.route('/login', methods=['POST'])
@@ -150,7 +150,7 @@ def goup():
     column = Toll(car=car,upu=[User[1]['id']],upt=datetime.datetime.now(),upp=pos,status=0)
     db.session.add(column)
     db.session.commit()
-    return trueReturn('success')
+    return trueReturn({"id":column.id})
 
 
 @app.route('/godown',methods=['POST'])
@@ -191,14 +191,15 @@ def godown():
     toll.downt = datetime.datetime.now()
     toll.downu = User[1]['id']
     toll.fee = calmoney(toll.upp,pos)
+    db.session.add(toll)
+    db.session.commit()
     rtn={
         'code':1,
         'fee':toll.fee,
         'upp':toll.upp,
         'upt':toll.upt.strftime("%Y-%m-%d %H:%M:%S"),
+        'id':toll.id
     }
-    db.session.add(toll)
-    db.session.commit()
     return trueReturn(rtn)
 
 
@@ -234,3 +235,68 @@ def pay():
         'code': -3,
     }
     return falseReturn(rtn, "车辆没有下道记录")
+
+
+@app.route('/uppic',methods=['POST'])
+def uppic():
+    '''
+    上传照片证据
+    :param: id:goup或godown接口中返回的id
+    :param: type:指明是上道还是下道，整数类型，0为上道照片，1为下道照片
+    :param: file:照片 png，jepg，jpg，gif 其中的一种格式
+    :return:json
+    '''
+    User = currentUser()
+    if User[0] == False:
+        return falseReturn(User[1])
+    id = request.form.get("id")
+    type = int(request.form.get("type"))
+    f = request.files["file"]
+
+    if id is None or type is None or f  is None:
+        rtn = {
+            'code': -1,
+        }
+        return falseReturn(rtn, "参数不完整")
+    file = ['png', 'jpg', 'gif', 'jpeg']
+    ffilename = f.filename
+    hou = f.filename.split('.')[1].lower()
+    if hou not in file:
+        return falseReturn({'code':-1},'不合法的图片格式')
+    fpath = os.path.join('app\\upload', ffilename)
+    f.save(fpath)
+    nfilename = filehash(hashlib.md5, fpath) + filehash(hashlib.sha1, fpath) + "." + hou
+    nfilepath = os.path.join('app\\pic', nfilename)
+    check = os.path.exists(nfilepath)
+    if check:
+        os.unlink(fpath)
+        return falseReturn({'code': -2}, '图片已经存在')
+
+
+    data = Toll.query.filter_by(id=id).first()
+    if type == 0:
+        if data.uppic is not None:
+            if data.uppic == nfilename:
+                os.unlink(fpath)
+                return falseReturn({'code': -2}, '重复上传')
+            else:
+                os.unlink(os.path.join('app\\pic', data.uppic))
+        data.uppic=nfilename
+        shutil.copy(fpath, nfilepath)
+        os.unlink(fpath)
+        db.session.add(data)
+        db.session.commit()
+        return trueReturn({'code':1})
+    else:
+        if data.downpic is not None:
+            if data.downpic == nfilename:
+                os.unlink(fpath)
+                return falseReturn({'code': -2}, '重复上传')
+            else:
+                os.unlink(os.path.join('app\\pic', data.downpic))
+        data.downpic=nfilename
+        shutil.copy(fpath, nfilepath)
+        os.unlink(fpath)
+        db.session.add(data)
+        db.session.commit()
+        return trueReturn({'code':1})

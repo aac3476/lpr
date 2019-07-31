@@ -68,6 +68,8 @@ class Toll(db.Model):
     fee = db.Column(db.Integer)
     upu = db.Column(db.Integer)
     downu = db.Column(db.Integer)
+    uppic = db.Column(db.VARCHAR(255))
+    downpic = db.Column(db.VARCHAR(255))
     def __repr__(self):
         return self.id
 
