@@ -43,10 +43,13 @@ def register():
         rtn={
             'code':-1
         }
+
         return falseReturn(rtn,'没有权限，访问被拒绝')
     username = request.form.get('username')
     password = request.form.get('password')
-    print(username,password)
+    usr = Users.query.filter_by(username=username).first()
+    if usr is not None:
+        return falseReturn(-2, '用户名已被注册')
     user = Users(username=username, password=Users.set_password(username, password))
     result = Users.add(username, user)
     if user.id is not None:
