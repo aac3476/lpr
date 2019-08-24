@@ -46,10 +46,6 @@ class lprclass:
             color = (255, 0, 0)
             for x in res:#遍历多个结果
                 if re.match(carre,x[0]):#对识别出来的车牌进行正则校验，判断是否符合车牌格式
-                    uploadimage = image
-                    cv2.rectangle(image, (x[2][0], x[2][1]), (x[2][2], x[2][3]), color, 10)#第二三个参数为左上和右下坐标
-                    image = cv2ImgAddText(image, x[0], x[2][0], x[2][3] + 20, color, 100)#x[0]是识别到的车牌号
-                    image = cv2ImgAddText(image, str(round(x[1] * 100, 2)) + "%", x[2][0], x[2][1] - 50, color, 50)#x[1]是置信度
                     if x[0] in carpailist:
                         pass#这个车牌已经被触发过以此，直接跳过
                     else:
@@ -59,7 +55,7 @@ class lprclass:
                             carpailist.pop(0)
                             carpailist.append(x[0])
                         print(x[0])
-                        cv2.imwrite(r"pic/" + str(num) + ".jpg", uploadimage)
+                        cv2.imwrite(r"pic/" + str(num) + ".jpg", image)
                         data = {
                             'id':num,
                             'car':x[0],
@@ -73,6 +69,10 @@ class lprclass:
                         这里添加其他代码，用于把识别后的结果返回给主窗口，识别后的参数在上面，可以直接调用，注意线程安全
                         '''
 
+                    cv2.rectangle(image, (x[2][0], x[2][1]), (x[2][2], x[2][3]), color, 10)  # 第二三个参数为左上和右下坐标
+                    image = cv2ImgAddText(image, x[0], x[2][0], x[2][3] + 20, color, 100)  # x[0]是识别到的车牌号
+                    image = cv2ImgAddText(image, str(round(x[1] * 100, 2)) + "%", x[2][0], x[2][1] - 50, color,
+                                          50)  # x[1]是置信度
 
 
             cv2.imshow("Capture_Test", image)  # 窗口显示，显示名为 Capture_Test
