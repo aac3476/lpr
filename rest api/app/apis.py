@@ -266,10 +266,10 @@ def uppic():
     hou = f.filename.split('.')[1].lower()
     if hou not in file:
         return falseReturn({'code':-1},'不合法的图片格式')
-    fpath = os.path.join('app\\upload', ffilename)
+    fpath = os.path.join('app/upload', ffilename)
     f.save(fpath)
     nfilename = filehash(hashlib.md5, fpath) + filehash(hashlib.sha1, fpath) + "." + hou
-    nfilepath = os.path.join('app\\pic', nfilename)
+    nfilepath = os.path.join('app/pic', nfilename)
     check = os.path.exists(nfilepath)
     if check:
         os.unlink(fpath)
@@ -283,7 +283,7 @@ def uppic():
                 os.unlink(fpath)
                 return falseReturn({'code': -2}, '重复上传')
             else:
-                os.unlink(os.path.join('app\\pic', data.uppic))
+                os.unlink(os.path.join('app/pic', data.uppic))
         data.uppic=nfilename
         shutil.copy(fpath, nfilepath)
         os.unlink(fpath)
@@ -296,7 +296,7 @@ def uppic():
                 os.unlink(fpath)
                 return falseReturn({'code': -2}, '重复上传')
             else:
-                os.unlink(os.path.join('app\\pic', data.downpic))
+                os.unlink(os.path.join('app/pic', data.downpic))
         data.downpic=nfilename
         shutil.copy(fpath, nfilepath)
         os.unlink(fpath)
