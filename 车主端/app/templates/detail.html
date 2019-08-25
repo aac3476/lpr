@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>高速公路收费系统</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/css/ready.css">
+	<link rel="stylesheet" href="../static/css/demo.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<div class="logo-header">
+				<a href="/index" class="logo">
+					高速公路收费系统
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+			</div>
+			<nav class="navbar navbar-header navbar-expand-lg">
+				<div class="container-fluid">
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                        <li class="nav-item hidden-caret">
+                            <a href="javascript:void(0);" onclick="cp('{{csrf_token()}}')">修改密码</a>
+                        </li>
+						<li class="nav-item hidden-caret">
+							<a class="nav-link " href="/logout" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="la la-sign-out"></i>
+							</a>
+						</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<div class="sidebar">
+				<div class="scrollbar-inner sidebar-wrapper">
+					<ul class="nav">
+						<li class="nav-item">
+							<a href="index">
+								<i class="la la-dashboard"></i>
+								<p>面板</p>
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a href="detail">
+								<i class="la la-table"></i>
+								<p>记录明细</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="main-panel">
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+                            <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    记录明细
+                                </div>
+									<div class="card-body">
+										<table class="table table-head-bg-primary mt-4">
+											<thead>
+												<tr>
+													<th scope="col">进入地点</th>
+													<th scope="col">进入时间</th>
+													<th scope="col">离开地点</th>
+                                                    <th scope="col">离开时间</th>
+                                                    <th scope="col">过路费</th>
+												</tr>
+											</thead>
+											<tbody>
+                                            {% for ths in lst %}
+												<tr>
+                                                {% if ths.uppic %}
+													<td><a href="http://lpr1.ywxisky.cn/getimg/{{ ths.uppic }}"> {{ ths.upp }}</a></td>
+                                                {% else %}
+                                                    <td>{{ ths.upp }}</td>
+                                                {% endif %}
+                                                <td>{{ ths.upt }}</td>
+                                                {% if ths.downpic %}
+													<td><a href="http://lpr1.ywxisky.cn/getimg/{{ ths.downpic }}"> {{ ths.downp }}</a></td>
+                                                {% else %}
+                                                    <td>{{ ths.downp or '' }}</td>
+                                                {% endif %}
+                                                <td>{{ ths.downt or ''}}</td>
+                                                <td>{{ ths.fee or ''}}</td>
+												</tr>
+                                            {% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+<script src="../static/js/core/jquery.3.2.1.min.js"></script>
+<script src="../static/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="../static/js/core/popper.min.js"></script>
+<script src="../static/js/core/bootstrap.min.js"></script>
+<script src="../static/js/plugin/chartist/chartist.min.js"></script>
+<script src="../static/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"></script>
+<script src="../static/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../static/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="../static/js/plugin/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="../static/js/plugin/jquery-mapael/maps/world_countries.min.js"></script>
+<script src="../static/js/plugin/chart-circle/circles.min.js"></script>
+<script src="../static/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../static/js/ready.min.js"></script>
+<script src="../static/js/demo.js"></script>
+<script src="../static/js/sweetalert2.js"></script>
+</html>
