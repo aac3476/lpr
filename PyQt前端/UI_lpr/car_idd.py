@@ -100,7 +100,7 @@ class Ui_carid(object):
             url = 'http://lpr1.ywxisky.cn/godown'
             r = requests.post(url, data=s,headers=UI_lpr.gl_headers.HEADERS)
             cr = json.loads(r.content.decode())
-            print(r.content.decode())
+            
             msgd=cr['msg']
             state=cr['status']
             msgbox1 = QMessageBox()
@@ -108,12 +108,12 @@ class Ui_carid(object):
             data=cr['data']
             id_go=data['id']
             UI_lpr.gl_headers.TYPE=1
-            print("下道")
+            
         else:
             url = 'http://lpr1.ywxisky.cn/goup'
             r = requests.post(url, data=s, headers=UI_lpr.gl_headers.HEADERS)
             cr = json.loads(r.content.decode())
-            print(r.content.decode())
+            
             msgu = cr['msg']
             state = cr['status']
             msgbox2 = QMessageBox()
@@ -121,7 +121,7 @@ class Ui_carid(object):
             data = cr['data']
             id_go= data['id']
             UI_lpr.gl_headers.TYPE=0
-            print("上道")
+            
         UI_lpr.gl_headers.ID=id_go
 
     def sendpic(self):
@@ -142,8 +142,4 @@ class Ui_carid(object):
         QMessageBox.information(msgbox3, '提示', str(msgp), QMessageBox.Yes)
 
 
-    '''
-    self.pushButton.clicked.connect(lambda:self.updata())
-            self.pushButton_2.clicked.connect(lambda:self.sendinf())
-            self.pushButton_3.clicked.connect(lambda:self.pay())
-            '''
+    
