@@ -71,10 +71,5 @@ class Ui_addia1(object):                  #改变类名为Ui_addia1
         dialog5 = QtWidgets.QDialog()
         ui_id.setupUi(dialog5)
         dialog5.exec_()
-        '''
-        self.timer = QTimer()
-        self.timer.start(1000)
-        self.timer.timeout.connect(lpr)
-        '''
-       #  ui_id.lineEdit.setText(UI_lpr.gl_headers.CNUM)
-
+        
+       
