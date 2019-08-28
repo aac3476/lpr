@@ -53,8 +53,7 @@ class Ui_delyh(object):
         del_name=str(self.lineEdit.text())
         s = {'username': del_name}
         url = 'http://lpr1.ywxisky.cn/deleteu'
-        print(del_name)
-        print(UI_lpr.gl_headers.HEADERS)
+       
 
         r = requests.post(url, headers=UI_lpr.gl_headers.HEADERS, data=s)
         cr = json.loads(r.content.decode())
