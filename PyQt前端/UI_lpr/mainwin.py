@@ -145,6 +145,4 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 
 
- #添加信号与槽
-       # self.pushButton.clicked.connect(lambda :self.gettxt())     #记得加lambda!!!!'
-        #self.pushButton_2.clicked.connect(QCoreApplication.instance().quit)
+ 
