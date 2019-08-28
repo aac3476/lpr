@@ -97,16 +97,10 @@ class lprclass:
     def down(self):
         self.running=False
 
-def getByte(path):
-    with open(path, 'rb') as f:
-        img_byte = base64.b64encode(f.read()) #二进制读取后变base64编码
-    img_str = img_byte.decode('ascii') #转成python的unicode
-    return img_str
 
 def lpr():
     if datalist.empty():
         # 没有数据进入，处理别的事情
-        print("已经过一秒")
         pass
     else:
         data = datalist.get(block=True, timeout=None)
@@ -116,13 +110,12 @@ def lpr():
 
         f1=open(r'./pic/'+pic_id+'.jpg','rb')
         s = {'id': UI_lpr.gl_headers.ID, 'type':UI_lpr.gl_headers.TYPE}
-        print(s)
         files = {'file':(pic_id+'.jpg',f1,'image/jpeg',{})}
         url='http://lpr1.ywxisky.cn/uppic'
         r = requests.post(url, headers=UI_lpr.gl_headers.HEADERS, data=s,files=files)
         f1.close()
         cr = json.loads(r.content.decode())
-        print(r.content.decode())
+        
         msgp = cr['msg']
         msgbox5 = QMessageBox()
         QMessageBox.information(msgbox5, '提示', str(msgp), QMessageBox.Yes)
@@ -131,20 +124,5 @@ def lpr():
 
 
 
-'''
-timer = QTimer()
-timer.start(1000)
-timer.timeout.connect(test)
 
-'''
-
-    #lpr()  # 这个地方不要用while True ，用pyqt的QTimer
-    #time.sleep(1)
-
-# im_t = Image.open('./pic/'+id+'.jpg')
-        # im_t.show()
-        #img = cv2.imread(r'./pic/'+id+'.jpg'))   方法一
-        #img_str = getByte(r'./pic/'+pic_id+'.jpg')   方法二
-
-#UI_lpr.gl_headers.CNUM=str(x[0])
-#cv2.imwrite(r'./pic/' +str(num) + '.jpg', uploadimage)
+    
