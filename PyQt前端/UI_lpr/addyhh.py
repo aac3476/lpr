@@ -4,7 +4,7 @@ import json
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from UI_lpr.testt import *
+#from UI_lpr.testt import *
 import UI_lpr.gl_headers
 
 class Ui_addyh(object):
