@@ -182,6 +182,16 @@ def godown():
         }
         return falseReturn(rtn, "车辆没有上道记录")
     if toll.downp is not None:
+        if toll.status is not None:
+            if toll.status == 1:
+                rtn = {
+                    'code': 3,
+                    'fee': toll.fee,
+                    'upp': toll.upp,
+                    'upt': toll.upt.strftime("%Y-%m-%d %H:%M:%S"),
+                    'id': toll.id
+                }
+                return falseReturn(rtn, "车辆已下道且完成付费")
         rtn = {
             'code': 2,
             'fee': toll.fee,
