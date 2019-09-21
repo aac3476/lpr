@@ -6,12 +6,12 @@ Create on 07-25 19:20 2019
 """
 
 from app import app,db
-from flask import request
-from flask import jsonify
+from flask import request,jsonify,Response
 from app.models import Users,Toll
 from app.common import trueReturn,falseReturn,currentUser,calmoney,filehash
 from app.Auth import Auth
-import datetime,os,hashlib,shutil
+from hyperlpr import *
+import datetime,os,hashlib,shutil,re,cv2
 
 
 @app.route('/login', methods=['POST'])
@@ -110,7 +110,6 @@ def get():
     return trueReturn(returnUser, "请求成功")
 
 
-
 @app.route('/test')
 def test():
     User = currentUser()
@@ -118,7 +117,6 @@ def test():
         return trueReturn(User[1])
     else:
         return falseReturn(User[1])
-
 
 
 @app.route('/goup',methods=['POST'])
@@ -313,3 +311,67 @@ def uppic():
         db.session.add(data)
         db.session.commit()
         return trueReturn({'code':1})
+
+
+@app.route("/getimg/<imageid>")
+def image(imageid):
+    '''
+    取得照片证据
+    :return:pic
+    '''
+    path = os.path.join('app/pic', imageid)
+    mdict = {
+        'jpeg': 'image/jpeg',
+        'jpg': 'image/jpeg',
+        'png': 'image/png',
+        'gif': 'image/gif'
+    }
+    if len(imageid.split('.'))>1:
+        mime = mdict[imageid.split('.')[1].lower()]
+
+        f =  open(os.path.join('app/pic', imageid),'rb')
+        imgstream=f.read()
+        f.close()
+        return Response(imgstream,mimetype=mime)
+    else:
+        return "error",404
+
+
+@app.route('/identify',methods=['POST','GET'])
+def identify():
+    '''
+        c++预留接口，车牌识别
+        :return:车牌
+    '''
+    carre = "^(京[A-HJ-NPQY]|沪[A-HJ-N]|津[A-HJ-NPQR]|渝[A-DFGHN]|冀[A-HJRST]|晋[A-FHJ-M]|蒙[A-HJKLM]|辽[A-HJ-NP]|吉[A-HJK]|黑[A-HJ-NPR]|苏[A-HJ-N]|浙[A-HJKL]|皖[A-HJ-NP-S]|闽[A-HJK]|赣[A-HJKLMS]|鲁[A-HJ-NP-SUVWY]|豫[A-HJ-NP-SU]|鄂[A-HJ-NP-S]|湘[A-HJ-NSU]|粤[A-HJ-NP-Y]|桂[A-HJ-NPR]|琼[A-F]|川[A-HJ-MQ-Z]|贵[A-HJ]|云[AC-HJ-NP-SV]|藏[A-HJ]|陕[A-HJKV]|甘[A-HJ-NP]|青[A-H]|宁[A-E]|新[A-HJ-NP-S])([0-9A-HJ-NP-Z]{4}[0-9A-HJ-NP-Z挂试]|[0-9]{4}学|[A-D0-9][0-9]{3}警|[DF][0-9A-HJ-NP-Z][0-9]{4}|[0-9]{5}[DF])$|^WJ[京沪津渝冀晋蒙辽吉黑苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云藏陕甘青宁新]?[0-9]{4}[0-9JBXTHSD]$|^(V[A-GKMORTV]|K[A-HJ-NORUZ]|H[A-GLOR]|[BCGJLNS][A-DKMNORVY]|G[JS])[0-9]{5}$|^[0-9]{6}使$|^([沪粤川渝辽云桂鄂湘陕藏黑]A|闽D|鲁B|蒙[AEH])[0-9]{4}领$|^粤Z[0-9A-HJ-NP-Z][0-9]{3}[港澳]$"
+    u = request.values.get('u')
+    p = request.values.get('p')
+    sql = "SELECT * FROM cppuser where name = '%s' and apikey='%s'" % (u, p)
+    userres = db.session.execute(sql).fetchall()
+    print(userres)
+    if len(userres) == 0:
+        res = 'api_username或api_key错误，为了接口安全使用本接口需要申请apikey'
+        return res.encode("gb2312")
+    print(userres[0][0])
+    f = request.files['picurl']
+    file = ['png', 'jpg', 'gif', 'jpeg']
+    ffilename = f.filename
+    hou = f.filename.split('.')[1].lower()
+    if hou not in file:
+        return falseReturn({'code': -1}, '不合法的图片格式')
+    fpath = os.path.join('app/upload', ffilename)
+    f.save(fpath)
+    image = cv2.imread(fpath)
+    ress = HyperLPR_PlateRecogntion(image)
+    res = ""
+    for x in ress:
+        if re.match(carre, x[0]):
+            res = x[0]
+    if res == "":
+        res = "no result"
+
+    os.unlink(fpath)
+    sql = "INSERT INTO apihistory (name,time,picname,result) VALUES ('%s',now(),'%s','%s')"%(userres[0][1],ffilename,res)
+    db.session.execute(sql)
+    db.session.commit()
+    return   res.encode("gb2312")

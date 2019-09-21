@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="846b4897-241e-4ee0-b1ae-6844511cb9f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../rest api/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rest api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../rest api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rest api/app/apis.py" beforeDir="false" afterPath="$PROJECT_DIR$/../rest api/app/apis.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UI_lpr/addyhh.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="38" lean-forward="true" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+            <state relative-caret-position="154">
+              <caret line="37" column="65" lean-forward="true" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -27,12 +24,69 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI_lpr/lpr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1188">
+            <state relative-caret-position="70">
+              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_lpr/gl_headers.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_lpr/delyhh.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-972">
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_lpr/com_dia11.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-400">
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_lpr/car_idd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2754">
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_lpr/admin_dia11.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1082" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UI_lpr/usershoww.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-774">
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,18 +110,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/UI_lpr/addyhh.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/PyQt前端.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/deployment.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" />
       </list>
     </option>
   </component>
@@ -160,12 +202,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567064502337</updated>
-      <workItem from="1567064503637" duration="1239000" />
+      <workItem from="1567064503637" duration="3130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1239000" />
+    <option name="totallyTimeSpent" value="3130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -182,7 +224,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -211,10 +253,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI_lpr/addyhh.py">
+    <entry file="file://$PROJECT_DIR$/UI_lpr/usershoww.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="38" lean-forward="true" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        <state relative-caret-position="-774">
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
@@ -223,9 +264,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UI_lpr/lpr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1188">
+        <state relative-caret-position="70">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_lpr/gl_headers.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_lpr/delyhh.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-972">
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_lpr/com_dia11.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-400">
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_lpr/car_idd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2754">
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_lpr/admin_dia11.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1082" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI_lpr/addyhh.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="37" column="65" lean-forward="true" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>

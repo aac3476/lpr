@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="938d8287-691f-4f93-b988-5acfac497462" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PyQt前端/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PyQt前端/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/apis.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/apis.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/apis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="762">
-              <caret line="193" column="51" selection-start-line="193" selection-start-column="51" selection-end-line="193" selection-end-column="51" />
+            <state relative-caret-position="432">
+              <caret line="181" column="9" lean-forward="true" selection-start-line="181" selection-start-column="9" selection-end-line="181" selection-end-column="9" />
               <folding>
                 <element signature="e#89#111#0" expanded="true" />
               </folding>
@@ -147,15 +145,25 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="rest api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rest api" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/chat" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -255,18 +263,18 @@
       <workItem from="1566445409447" duration="1036000" />
       <workItem from="1566475604228" duration="2024000" />
       <workItem from="1566661130075" duration="1246000" />
-      <workItem from="1567065485161" duration="252000" />
+      <workItem from="1567065485161" duration="858000" />
+      <workItem from="1567830348374" duration="19000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43474000" />
+    <option name="totallyTimeSpent" value="44099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14285715" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1444563" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -367,8 +375,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/apis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="762">
-          <caret line="193" column="51" selection-start-line="193" selection-start-column="51" selection-end-line="193" selection-end-column="51" />
+        <state relative-caret-position="432">
+          <caret line="181" column="9" lean-forward="true" selection-start-line="181" selection-start-column="9" selection-end-line="181" selection-end-column="9" />
           <folding>
             <element signature="e#89#111#0" expanded="true" />
           </folding>
