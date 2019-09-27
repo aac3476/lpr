@@ -76,11 +76,7 @@ class Ui_addyh(object):
         cr = json.loads(r.content.decode())
         
         state = cr['status']
-        print(state)
-        if state==True:
-            msgbox1 = QMessageBox()
-            QMessageBox.information(msgbox1, '提示', '成功添加用户', QMessageBox.Yes)
-        else:
-            msgbox2 = QMessageBox()
-            QMessageBox.information(msgbox2, '提示', '用户名已存在', QMessageBox.Yes)
+        msg = str(cr['msg'])
+        msgbox1 = QMessageBox()
+        QMessageBox.information(msgbox1, '提示',  msg , QMessageBox.Yes)
 
