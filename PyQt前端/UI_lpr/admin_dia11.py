@@ -63,7 +63,7 @@ class Ui_addia1(object):                  #改变类名为Ui_addia1
         dialog4.exec_()
 
 
-    def lpr_carid(self):
+     def lpr_carid(self):
         ctl = lprclass()
         thr = threading.Thread(target=ctl.carp)
         thr.start()
@@ -71,5 +71,3 @@ class Ui_addia1(object):                  #改变类名为Ui_addia1
         dialog5 = QtWidgets.QDialog()
         ui_id.setupUi(dialog5)
         dialog5.exec_()
-        
-       
