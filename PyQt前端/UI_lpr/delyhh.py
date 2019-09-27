@@ -57,11 +57,7 @@ class Ui_delyh(object):
 
         r = requests.post(url, headers=UI_lpr.gl_headers.HEADERS, data=s)
         cr = json.loads(r.content.decode())
-        state=cr['status']
-        if state=='True':
-            msgbox1 = QMessageBox()
-            QMessageBox.information(msgbox1, '提示', '删除成功', QMessageBox.Yes)
-
-        else:
-            msgbox2 = QMessageBox()
-            QMessageBox.information(msgbox2, '提示', '找不到用户', QMessageBox.Yes)
+        #state=cr['status']
+        msg = str(cr['msg'])
+        msgbox1 = QMessageBox()
+        QMessageBox.information(msgbox1, '提示', msg, QMessageBox.Yes)
