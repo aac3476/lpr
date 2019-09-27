@@ -67,12 +67,15 @@ class lprclass:
                             'pos_l': (x[2][0], x[2][1]),
                             'pos_r': (x[2][2], x[2][3])
                         }
+                        UI_lpr.gl_headers.PICNUM=num
                         datalist.put(data)
                         num = num + 1
                         '''
                         这里添加其他代码，用于把识别后的结果返回给主窗口，识别后的参数在上面，可以直接调用，注意线程安全
                         '''
                         UI_lpr.gl_headers.CNUM = str(x[0])
+                        
+
 
                     cv2.rectangle(image, (x[2][0], x[2][1]), (x[2][2], x[2][3]), color, 10)  # 第二三个参数为左上和右下坐标
                     image = cv2ImgAddText(image, x[0], x[2][0], x[2][3] + 20, color, 100)  # x[0]是识别到的车牌号
@@ -96,33 +99,6 @@ class lprclass:
 
     def down(self):
         self.running=False
-
-
-def lpr():
-    if datalist.empty():
-        # 没有数据进入，处理别的事情
-        pass
-    else:
-        data = datalist.get(block=True, timeout=None)
-        pic_id = str(data['id'])
-        # 这里接收数据，图片从pic/data['id'].jpg读取，用完之后记得删除
-        #os.unlink('pic/'+str(data['id']+'.jpg')
-
-        f1=open(r'./pic/'+pic_id+'.jpg','rb')
-        s = {'id': UI_lpr.gl_headers.ID, 'type':UI_lpr.gl_headers.TYPE}
-        files = {'file':(pic_id+'.jpg',f1,'image/jpeg',{})}
-        url='http://lpr1.ywxisky.cn/uppic'
-        r = requests.post(url, headers=UI_lpr.gl_headers.HEADERS, data=s,files=files)
-        f1.close()
-        cr = json.loads(r.content.decode())
-        
-        msgp = cr['msg']
-        msgbox5 = QMessageBox()
-        QMessageBox.information(msgbox5, '提示', str(msgp), QMessageBox.Yes)
-        os.unlink(r'./pic/'+pic_id+'.jpg')
-
-
-
 
 
     
