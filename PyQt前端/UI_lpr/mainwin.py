@@ -20,6 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(519, 433)
+        self.form = MainWindow      #保留传入的mainwindow
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -121,18 +122,20 @@ class Ui_MainWindow(object):
                 ui_addia1= Ui_addia1()
                 addia1= QtWidgets.QDialog()
                 ui_addia1.setupUi_addia1(addia1)
-                addia1.exec_()    #出现管理员第一个对话框
+                self.form.hide()   #隐藏mainwindow窗口
+                addia1.show()
+                addia1.exec_()   #出现管理员第一个对话框
+                self.form.show()
             else:
                 ui_comdia1 = Ui_comdia1()
                 comdia1 = QtWidgets.QDialog()
                 ui_comdia1.setupUi_com(comdia1)
                 comdia1.exec_()
-                # self.close()
+                
 
         else:
             msgbox=QMessageBox()
             QMessageBox.question(msgbox,'提示',str(msgu),QMessageBox.Yes)
-
 
 
 if __name__ == '__main__':
@@ -143,6 +146,7 @@ if __name__ == '__main__':
     MainWindow.show()
 
     sys.exit(app.exec_())
+
 
 
  
